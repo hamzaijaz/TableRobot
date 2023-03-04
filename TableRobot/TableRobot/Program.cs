@@ -4,12 +4,15 @@ using TableRobot;
 
 class Program
 {
+    private const int TableXCoordinate = 5;
+    private const int TableYCoordinate = 5;
+
     private const string pattern = "^(?i)(PLACE [0-9]+,[0-9]+,(NORTH|EAST|SOUTH|WEST)|MOVE|LEFT|RIGHT|REPORT|HELP|EXIT)$";
 
     static void Main(string[] args)
     {
         Robot robot = new Robot();
-        Table table = new Table(5, 5);
+        Table table = new Table(TableXCoordinate, TableYCoordinate);
 
         DisplayInstructions();
 
@@ -30,7 +33,37 @@ class Program
             {
                 ShowInvalidInputCommandError();
             }
+
+            else if (userInput.StartsWith("PLACE", StringComparison.InvariantCultureIgnoreCase))
+            {
+                PlaceRobotOnTable(robot, table, userInput);
+            }
+
+            else if (userInput.Equals("REPORT", StringComparison.InvariantCultureIgnoreCase))
+            {
+                robot.ReportPosition();
+            }
         }
+        return false;
+    }
+
+    private static bool PlaceRobotOnTable(Robot robot, Table table, string userInput)
+    {
+        string[] placeInformation = userInput.Split(' ')[1].Split(',');
+        int userRobotXCoordinate = Int32.Parse(placeInformation[0]);
+        int userRobotYCoordinate = Int32.Parse(placeInformation[1]);
+        int userRobotDirection = (int)(Enum.Parse(typeof(Robot.Directions), placeInformation[2]));
+
+        if (userRobotXCoordinate >= 0 || userRobotXCoordinate <= TableXCoordinate
+            || userRobotYCoordinate >= 0 || userRobotYCoordinate <= TableYCoordinate)
+        {
+            robot.PlaceRobot(userRobotXCoordinate, userRobotYCoordinate, userRobotDirection);
+            return true;
+        }
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"\nInvalid coordinates. 0 <= X <= {TableXCoordinate}. 0 <= Y <= {TableYCoordinate}\n");
+        Console.ForegroundColor = ConsoleColor.White;
         return false;
     }
 

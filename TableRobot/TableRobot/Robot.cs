@@ -34,6 +34,11 @@ namespace TableRobot
             RobotFace = facing;
         }
 
+        public void ReportPosition()
+        {
+            Console.WriteLine($"Current position of robot is: ({RobotXCoordinate}, {RobotYCoordinate}) Facing {Enum.GetName(typeof(Directions), RobotFace)}");
+        }
+
         //Move the robot one unit forward in the direction which it is facing
         public void MoveForward(Table table)
         {
