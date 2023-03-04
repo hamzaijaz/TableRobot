@@ -37,7 +37,7 @@ class Program
     private static void ShowInvalidInputCommandError() 
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("\nInvalid Command\n");
+        Console.WriteLine("\nCommand validation failed. Please enter a valid input command\n");
         Console.ForegroundColor = ConsoleColor.White;
     }
 
