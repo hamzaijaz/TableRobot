@@ -1,7 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using System.ComponentModel.DataAnnotations;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using TableRobot;
 
 class Program
@@ -23,8 +21,24 @@ class Program
 
     private static bool TakeAndValidateCommand(Robot robot, Table table)
     {
-        Console.ReadLine();
+        string userInput = null;
+        
+        while (!string.Equals("EXIT", userInput, StringComparison.InvariantCultureIgnoreCase))
+        {
+            userInput = Console.ReadLine();
+            if (!Regex.IsMatch(userInput, pattern))
+            {
+                ShowInvalidInputCommandError();
+            }
+        }
         return false;
+    }
+
+    private static void ShowInvalidInputCommandError() 
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\nInvalid Command\n");
+        Console.ForegroundColor = ConsoleColor.White;
     }
 
     private static void DisplayInstructions()
