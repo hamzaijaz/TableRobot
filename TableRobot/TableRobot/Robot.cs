@@ -41,9 +41,9 @@
             RobotFace = facing;
         }
 
-        public void ReportPosition()
+        public string ReportPosition()
         {
-            Console.WriteLine($"Current position of robot is: ({RobotXCoordinate}, {RobotYCoordinate}) Facing {Enum.GetName(typeof(Directions), RobotFace)}");
+            return $"Current position of robot is: ({RobotXCoordinate}, {RobotYCoordinate}) Facing {Enum.GetName(typeof(Directions), RobotFace)}";
         }
 
         public void Draw(Table table)

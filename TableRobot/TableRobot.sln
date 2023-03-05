@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableRobot", "TableRobot\TableRobot.csproj", "{4BA87544-8036-4DED-BAF4-B1C17409E2A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TableRobot", "TableRobot\TableRobot.csproj", "{4BA87544-8036-4DED-BAF4-B1C17409E2A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableRobot.Test", "TableRobot.Test\TableRobot.Test.csproj", "{18C99220-4F21-48E5-8D73-8E50FAF58791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4BA87544-8036-4DED-BAF4-B1C17409E2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BA87544-8036-4DED-BAF4-B1C17409E2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BA87544-8036-4DED-BAF4-B1C17409E2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C99220-4F21-48E5-8D73-8E50FAF58791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C99220-4F21-48E5-8D73-8E50FAF58791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C99220-4F21-48E5-8D73-8E50FAF58791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C99220-4F21-48E5-8D73-8E50FAF58791}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

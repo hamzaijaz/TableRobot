@@ -52,7 +52,7 @@ class Program
                     break;
                 case "REPORT":
                 case "report":
-                    robot.ReportPosition();
+                    Console.WriteLine(robot.ReportPosition());
                     break;
                 case "DRAW":
                 case "draw":
@@ -95,7 +95,7 @@ class Program
 
             else if (userInput.Equals("REPORT", StringComparison.InvariantCultureIgnoreCase))
             {
-                robot.ReportPosition();
+                Console.WriteLine(robot.ReportPosition());
             }
         }
         return false;
