@@ -1,0 +1,78 @@
+Hit enter after typing each command number;
+
+Test 1:
+1. PLACE 5,5,SOUTH
+2. MOVE
+3. MOVE
+4. REPORT
+=> Current position of robot is: (5, 3) Facing SOUTH
+
+Test 2:
+1. abcd
+=> Command validation failed. Please enter a valid input command
+
+Test 3:
+1. PLACE 0,0,NORTH
+2. RIGHT
+3. MOVE
+4. REPORT
+=> Current position of robot is: (1, 0) Facing EAST
+
+Test 4:
+1. PLACE 20, 20, NORTH
+=> Invalid coordinates. 0 <= X <= 5. 0 <= Y <= 5
+
+Test 5:
+1. PLACE 1,1,NORTH
+2. DRAW
+=> 
+.       .       .       .       .       .
+
+.       .       .       .       .       .
+
+.       .       .       .       .       .
+
+.       .       .       .       .       .
+
+.       R       .       .       .       .
+
+.       .       .       .       .       .
+
+Test 6:
+1. PLACE 5,5,NORTH
+2. MOVE
+3. MOVE
+4. REPORT
+=> Current position of robot is: (5, 5) Facing NORTH
+
+Test 7:
+1. PLACE 3,3,NORTH
+2. MOVE
+3. HELP
+4. REPORT
+=> Current position of robot is: (3, 4) Facing NORTH
+
+Test 8:
+1. PLACE 2,2,WEST
+2. HELP
+=> 
+                         You can use the following commands
+                        -------------------------------
+1) PLACE X,Y,F  : Place Robot on the table at (X,Y) coordinate position, facing F direction.
+
+                         X and Y should be greater than or equal to 0, and less than or equal to 5
+                         F : 'NORTH | EAST | SOUTH | WEST'
+                         (0,0) is SOUTH WEST most corner of the table
+
+2) MOVE         : Move one unit forward in the current direction robot is facing
+3) RIGHT        : Rotate the robot 90 degrees clockwise
+4) LEFT         : Rotate the robot 90 degrees counter clockwise
+5) REPORT       : Report position of robot as X, Y, and F
+6) DRAW         : Draw table and Robot on screen
+7) HELP         : Get list of commands again
+8) EXIT         : Exit the application
+--------------------------------------------------------------------------------------------
+
+Test 9:
+1. EXIT
+=> Press any key to close this window . . .
