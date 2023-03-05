@@ -18,7 +18,7 @@ class Program
 
         DisplayInstructions();
 
-        if (TakeAndValidatePlaceCommand(robot, table, placeOrExitCommandPattern))
+        if (TakeAndValidatePlaceCommand(robot, table, placeOrExitCommandPattern, null))
         {
             DoRobotDrill(robot, table);
         }
@@ -63,6 +63,7 @@ class Program
                     DisplayInstructions();
                     break;
                 default:
+                    //will cover PLACE, EXIT
                     TakeAndValidatePlaceCommand(robot, table, anyCommandPattern, userInput);
                     break;
             }
