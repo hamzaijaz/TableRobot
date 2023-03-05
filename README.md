@@ -11,7 +11,8 @@ Prerequisite software
 Once you have these prerequisites:
 1. Open the solution ```TableRobot.sln``` in Visual Studio
 2. Build the solution and make sure there are no errors
-3. 
+3. Run and debug the project by clicking on play button with TableRobot: ![image](https://user-images.githubusercontent.com/33806340/222958143-e342b238-fe4d-4e10-81a2-c8f9c9f61208.png)
+4. This will start the application on Console, along with instructions: ![image](https://user-images.githubusercontent.com/33806340/222958180-6815054e-cb23-455a-ba20-cdd677df9e2e.png)
 
 Initially it will be a 5x5 units table. You will need to follow instructions in order to play.
 
