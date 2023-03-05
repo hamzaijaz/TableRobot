@@ -16,7 +16,7 @@ Once you have these prerequisites:
 4. This will start the application on Console, along with instructions: ![image](https://user-images.githubusercontent.com/33806340/222958180-6815054e-cb23-455a-ba20-cdd677df9e2e.png)
 
 Initially it will be a 5x5 units table.
-A file [testdata.txt](https://github.com/hamzaijaz/TableRobot/blob/main/testdata.txt) has been provided to support running, understanding and testing this application manually. (unit tests have been added separately).
+A file [testdata.txt](https://github.com/hamzaijaz/TableRobot/blob/main/testdata.txt) has been provided to support running, understanding and testing this application manually. (unit tests have been added separately in [RobotTests.cs](https://github.com/hamzaijaz/TableRobot/blob/main/TableRobot/TableRobot.Test/RobotTests.cs)).
 
 You will need to use the following commands in order to play.
 
