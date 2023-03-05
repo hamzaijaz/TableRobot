@@ -46,6 +46,30 @@
             Console.WriteLine($"Current position of robot is: ({RobotXCoordinate}, {RobotYCoordinate}) Facing {Enum.GetName(typeof(Directions), RobotFace)}");
         }
 
+        public void Draw(Table table)
+        {
+            Console.WriteLine();
+
+            //decrementing i because bottom left corner of table is (0, 0)
+            //unlike usual arrays, which have top left corner (0, 0)
+            for (int i = table.Rows; i >= 0; i--)
+            {
+                for (int j = 0; j <= table.Columns; j++)
+                {
+                    if (j == RobotXCoordinate && i == RobotYCoordinate)
+                    {
+                        Console.Write("R\t");
+                    }
+                    else
+                    {
+                        Console.Write(".\t");
+                    }
+                }
+                Console.WriteLine('\n');
+            }
+            Console.WriteLine();
+        }
+
         //Move the robot one unit forward in the direction which it is facing
         public void MoveForward(Table table)
         {

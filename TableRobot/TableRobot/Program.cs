@@ -4,10 +4,11 @@ using TableRobot;
 
 class Program
 {
+    //configurable table size
     private const int TableXCoordinate = 5;
     private const int TableYCoordinate = 5;
 
-    private const string anyCommandPattern = "^(?i)(PLACE [0-9]+,[0-9]+,(NORTH|EAST|SOUTH|WEST)|MOVE|LEFT|RIGHT|REPORT|HELP|EXIT)$";
+    private const string anyCommandPattern = "^(?i)(PLACE [0-9]+,[0-9]+,(NORTH|EAST|SOUTH|WEST)|MOVE|LEFT|RIGHT|REPORT|DRAW|HELP|EXIT)$";
     private const string placeOrExitCommandPattern = "^(?i)(PLACE [0-9]+,[0-9]+,(NORTH|EAST|SOUTH|WEST)|HELP|EXIT)$";
 
     static void Main(string[] args)
@@ -17,7 +18,7 @@ class Program
 
         DisplayInstructions();
 
-        if (TakeAndValidatePlaceCommand(robot, table))
+        if (TakeAndValidatePlaceCommand(robot, table, placeOrExitCommandPattern))
         {
             DoRobotDrill(robot, table);
         }
@@ -30,6 +31,11 @@ class Program
         while (!string.Equals("EXIT", userInput, StringComparison.InvariantCultureIgnoreCase))
         {
             userInput = Console.ReadLine();
+            while (!Regex.IsMatch(userInput, anyCommandPattern))
+            {
+                ShowInvalidInputCommandError();
+                userInput = Console.ReadLine();
+            }
             switch (userInput)
             {
                 case "MOVE":
@@ -48,25 +54,29 @@ class Program
                 case "report":
                     robot.ReportPosition();
                     break;
+                case "DRAW":
+                case "draw":
+                    robot.Draw(table);
+                    break;
                 case "HELP":
                 case "help":
                     DisplayInstructions();
                     break;
                 default:
-                    TakeAndValidatePlaceCommand(robot, table, userInput);
+                    TakeAndValidatePlaceCommand(robot, table, anyCommandPattern, userInput);
                     break;
             }
         }
     }
 
-    private static bool TakeAndValidatePlaceCommand(Robot robot, Table table, string userInput1 = null)
+    private static bool TakeAndValidatePlaceCommand(Robot robot, Table table, string regexValidationPattern, string userInput1 = null)
     {
         string userInput = string.IsNullOrWhiteSpace(userInput1) ? null : userInput1;
         
         while (!string.Equals("EXIT", userInput, StringComparison.InvariantCultureIgnoreCase))
         {
-            userInput = Console.ReadLine();
-            if (!Regex.IsMatch(userInput, placeOrExitCommandPattern))
+            userInput = string.IsNullOrWhiteSpace(userInput1) ? Console.ReadLine() : userInput1;
+            if (!Regex.IsMatch(userInput, regexValidationPattern))
             {
                 ShowInvalidInputCommandError();
             }
@@ -130,8 +140,9 @@ class Program
             "3) RIGHT \t: Rotate the robot 90 degrees clockwise\n" +
             "4) LEFT \t: Rotate the robot 90 degrees counter clockwise\n" +
             "5) REPORT \t: Report position of robot as X, Y, and F\n" +
-            "6) HELP \t: Get list of commands again\n" +
-            "7) EXIT \t: Exit the application\n" +
+            "6) DRAW \t: Draw table and Robot on screen\n" +
+            "7) HELP \t: Get list of commands again\n" +
+            "8) EXIT \t: Exit the application\n" +
             "--------------------------------------------------------------------------------------------\n";
         Console.WriteLine(text);
     }
