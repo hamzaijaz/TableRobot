@@ -36,30 +36,24 @@ class Program
                 ShowInvalidInputCommandError();
                 userInput = Console.ReadLine();
             }
-            switch (userInput)
+            switch (userInput.ToUpper())
             {
                 case "MOVE":
-                case "move":
                     robot.MoveForward(table);
                     break;
                 case "LEFT":
-                case "left":
                     robot.Rotate(userInput);
                     break;
                 case "RIGHT":
-                case "right":
                     robot.Rotate(userInput);
                     break;
                 case "REPORT":
-                case "report":
                     Console.WriteLine(robot.ReportPosition());
                     break;
                 case "DRAW":
-                case "draw":
                     robot.Draw(table);
                     break;
                 case "HELP":
-                case "help":
                     DisplayInstructions();
                     break;
                 default:
