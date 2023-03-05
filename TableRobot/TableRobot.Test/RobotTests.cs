@@ -29,7 +29,7 @@ namespace TableRobot.Test
             var robot = new Robot(); //x = 0, y = 0, Face = North be default
 
             // Act
-            robot.Rotate("LEFT");
+            robot.Rotate("LEFT"); //WEST
 
             // Assert
             var report = robot.ReportPosition();
@@ -43,8 +43,8 @@ namespace TableRobot.Test
             var robot = new Robot(); //x = 0, y = 0, Face = North be default
 
             // Act
-            robot.Rotate("LEFT");
-            robot.Rotate("LEFT");
+            robot.Rotate("LEFT"); //WEST
+            robot.Rotate("LEFT"); //SOUTH
 
             // Assert
             var report = robot.ReportPosition();
@@ -58,7 +58,7 @@ namespace TableRobot.Test
             var robot = new Robot(); //x = 0, y = 0, Face = North be default
 
             // Act
-            robot.Rotate("RIGHT");
+            robot.Rotate("RIGHT"); //EAST
 
             // Assert
             var report = robot.ReportPosition();
@@ -72,8 +72,8 @@ namespace TableRobot.Test
             var robot = new Robot(); //x = 0, y = 0, Face = North be default
 
             // Act
-            robot.Rotate("RIGHT");
-            robot.Rotate("RIGHT");
+            robot.Rotate("RIGHT"); //EAST
+            robot.Rotate("RIGHT"); //SOUTH
 
             // Assert
             var report = robot.ReportPosition();
