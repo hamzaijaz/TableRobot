@@ -21,7 +21,7 @@
             RobotFace = 0; //North
         }
 
-        public void RotateRobot(string rotateTowards)
+        public void Rotate(string rotateTowards)
         {
             if (string.Equals("LEFT", rotateTowards, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -34,7 +34,7 @@
             }
         }
 
-        public void PlaceRobot(int xCoordinate, int yCoordinate, int facing)
+        public void Place(int xCoordinate, int yCoordinate, int facing)
         {
             RobotXCoordinate = xCoordinate;
             RobotYCoordinate = yCoordinate;

@@ -44,11 +44,11 @@ class Program
                     break;
                 case "LEFT":
                 case "left":
-                    robot.RotateRobot(userInput);
+                    robot.Rotate(userInput);
                     break;
                 case "RIGHT":
                 case "right":
-                    robot.RotateRobot(userInput);
+                    robot.Rotate(userInput);
                     break;
                 case "REPORT":
                 case "report":
@@ -110,7 +110,7 @@ class Program
         if ((userRobotXCoordinate >= 0 && userRobotXCoordinate <= TableXCoordinate)
             && (userRobotYCoordinate >= 0 && userRobotYCoordinate <= TableYCoordinate))
         {
-            robot.PlaceRobot(userRobotXCoordinate, userRobotYCoordinate, userRobotDirection);
+            robot.Place(userRobotXCoordinate, userRobotYCoordinate, userRobotDirection);
             return true;
         }
 
