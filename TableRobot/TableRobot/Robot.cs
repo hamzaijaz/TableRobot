@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TableRobot
+﻿namespace TableRobot
 {
     public class Robot
     {
@@ -25,6 +19,19 @@ namespace TableRobot
             RobotXCoordinate = 0;
             RobotYCoordinate = 0;
             RobotFace = 0; //North
+        }
+
+        public void RotateRobot(string rotateTowards)
+        {
+            if (string.Equals("LEFT", rotateTowards, StringComparison.InvariantCultureIgnoreCase))
+            {
+                RobotFace = RobotFace == ((int)Directions.NORTH) ? ((int)Directions.WEST) : RobotFace - 1;
+            }
+
+            if (string.Equals("RIGHT", rotateTowards, StringComparison.InvariantCultureIgnoreCase))
+            {
+                RobotFace = RobotFace == ((int)Directions.WEST) ? ((int)Directions.NORTH) : RobotFace + 1;
+            }
         }
 
         public void PlaceRobot(int xCoordinate, int yCoordinate, int facing)
@@ -61,7 +68,7 @@ namespace TableRobot
 
         private void MoveTowardsNorth(Table table)
         {
-            if (RobotYCoordinate + 1 < table.Rows)
+            if (RobotYCoordinate + 1 <= table.Rows)
             {
                 RobotYCoordinate++;
             }
@@ -69,7 +76,7 @@ namespace TableRobot
 
         private void MoveTowardsEast(Table table)
         {
-            if (RobotXCoordinate + 1 < table.Columns)
+            if (RobotXCoordinate + 1 <= table.Columns)
             {
                 RobotXCoordinate++;
             }

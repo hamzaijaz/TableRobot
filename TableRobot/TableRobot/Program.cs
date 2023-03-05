@@ -7,7 +7,8 @@ class Program
     private const int TableXCoordinate = 5;
     private const int TableYCoordinate = 5;
 
-    private const string pattern = "^(?i)(PLACE [0-9]+,[0-9]+,(NORTH|EAST|SOUTH|WEST)|MOVE|LEFT|RIGHT|REPORT|HELP|EXIT)$";
+    private const string anyCommandPattern = "^(?i)(PLACE [0-9]+,[0-9]+,(NORTH|EAST|SOUTH|WEST)|MOVE|LEFT|RIGHT|REPORT|HELP|EXIT)$";
+    private const string placeOrExitCommandPattern = "^(?i)(PLACE [0-9]+,[0-9]+,(NORTH|EAST|SOUTH|WEST)|HELP|EXIT)$";
 
     static void Main(string[] args)
     {
@@ -16,20 +17,56 @@ class Program
 
         DisplayInstructions();
 
-        if (TakeAndValidateCommand(robot, table))
+        if (TakeAndValidatePlaceCommand(robot, table))
         {
-
+            DoRobotDrill(robot, table);
         }
     }
 
-    private static bool TakeAndValidateCommand(Robot robot, Table table)
+    private static void DoRobotDrill(Robot robot, Table table)
     {
         string userInput = null;
+
+        while (!string.Equals("EXIT", userInput, StringComparison.InvariantCultureIgnoreCase))
+        {
+            userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "MOVE":
+                case "move":
+                    robot.MoveForward(table);
+                    break;
+                case "LEFT":
+                case "left":
+                    robot.RotateRobot(userInput);
+                    break;
+                case "RIGHT":
+                case "right":
+                    robot.RotateRobot(userInput);
+                    break;
+                case "REPORT":
+                case "report":
+                    robot.ReportPosition();
+                    break;
+                case "HELP":
+                case "help":
+                    DisplayInstructions();
+                    break;
+                default:
+                    TakeAndValidatePlaceCommand(robot, table, userInput);
+                    break;
+            }
+        }
+    }
+
+    private static bool TakeAndValidatePlaceCommand(Robot robot, Table table, string userInput1 = null)
+    {
+        string userInput = string.IsNullOrWhiteSpace(userInput1) ? null : userInput1;
         
         while (!string.Equals("EXIT", userInput, StringComparison.InvariantCultureIgnoreCase))
         {
             userInput = Console.ReadLine();
-            if (!Regex.IsMatch(userInput, pattern))
+            if (!Regex.IsMatch(userInput, placeOrExitCommandPattern))
             {
                 ShowInvalidInputCommandError();
             }
@@ -37,6 +74,12 @@ class Program
             else if (userInput.StartsWith("PLACE", StringComparison.InvariantCultureIgnoreCase))
             {
                 PlaceRobotOnTable(robot, table, userInput);
+                return true;
+            }
+
+            else if (userInput.Equals("HELP", StringComparison.InvariantCultureIgnoreCase))
+            {
+                DisplayInstructions();
             }
 
             else if (userInput.Equals("REPORT", StringComparison.InvariantCultureIgnoreCase))
@@ -54,8 +97,8 @@ class Program
         int userRobotYCoordinate = Int32.Parse(placeInformation[1]);
         int userRobotDirection = (int)(Enum.Parse(typeof(Robot.Directions), placeInformation[2]));
 
-        if (userRobotXCoordinate >= 0 || userRobotXCoordinate <= TableXCoordinate
-            || userRobotYCoordinate >= 0 || userRobotYCoordinate <= TableYCoordinate)
+        if ((userRobotXCoordinate >= 0 && userRobotXCoordinate <= TableXCoordinate)
+            && (userRobotYCoordinate >= 0 && userRobotYCoordinate <= TableYCoordinate))
         {
             robot.PlaceRobot(userRobotXCoordinate, userRobotYCoordinate, userRobotDirection);
             return true;
