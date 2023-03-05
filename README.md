@@ -2,6 +2,7 @@
 This console application is a simulation of a toy robot moving on a square tabletop of dimensions 5 units x 5 units, starting from (0,0) to (5,5)
 
 Coded in c# .NET 6
+Tested with xUnit and Fluent Assertions
 
 ### How to run TableRobot on your machine?
 Prerequisite software
@@ -14,7 +15,10 @@ Once you have these prerequisites:
 3. Run and debug the project by clicking on play button with TableRobot: ![image](https://user-images.githubusercontent.com/33806340/222958143-e342b238-fe4d-4e10-81a2-c8f9c9f61208.png)
 4. This will start the application on Console, along with instructions: ![image](https://user-images.githubusercontent.com/33806340/222958180-6815054e-cb23-455a-ba20-cdd677df9e2e.png)
 
-Initially it will be a 5x5 units table. You will need to follow instructions in order to play.
+Initially it will be a 5x5 units table.
+A file [testdata.txt](https://github.com/hamzaijaz/TableRobot/blob/main/testdata.txt) has been provided to support running, understanding and testing this application manually. (unit tests have been added separately).
+
+You will need to use the following commands in order to play.
 
 1. ```PLACE``` command: It places the robot on table. Correct pattern to use this command is ```PLACE x,y,direction```
 For example:
@@ -33,7 +37,7 @@ For example:
 
 5. ```Report``` command: It reports the current position and direction of the robot in format (x, y) direction.
 For example:
-    * if the robot is 2 units x, and 5 units y, facing NORTH, the report command will produce following response ```Current position of robot is: (2, 5) Facing NORTH```
+    * if the robot is 2 units on x-axis, and 5 units on y-axis, facing NORTH, the report command will produce following response ```Current position of robot is: (2, 5) Facing NORTH```
 
 6. ```Draw``` command: It draws a table of 5x5 units, starting from 0,0, and shows position of robot as R
 For example:
