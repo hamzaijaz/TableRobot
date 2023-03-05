@@ -97,7 +97,7 @@ class Program
 
     private static bool PlaceRobotOnTable(Robot robot, Table table, string userInput)
     {
-        string[] placeInformation = userInput.Split(' ')[1].Split(',');
+        string[] placeInformation = userInput.ToUpper().Split(' ')[1].Split(',');
         int userRobotXCoordinate = Int32.Parse(placeInformation[0]);
         int userRobotYCoordinate = Int32.Parse(placeInformation[1]);
         int userRobotDirection = (int)(Enum.Parse(typeof(Robot.Directions), placeInformation[2]));
