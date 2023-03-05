@@ -78,7 +78,7 @@ class Program
 
             else if (userInput.StartsWith("PLACE", StringComparison.InvariantCultureIgnoreCase))
             {
-                PlaceRobotOnTable(robot, table, userInput);
+                PlaceRobotOnTable(robot, userInput);
                 return true;
             }
 
@@ -95,7 +95,7 @@ class Program
         return false;
     }
 
-    private static bool PlaceRobotOnTable(Robot robot, Table table, string userInput)
+    private static bool PlaceRobotOnTable(Robot robot, string userInput)
     {
         string[] placeInformation = userInput.ToUpper().Split(' ')[1].Split(',');
         int userRobotXCoordinate = Int32.Parse(placeInformation[0]);
